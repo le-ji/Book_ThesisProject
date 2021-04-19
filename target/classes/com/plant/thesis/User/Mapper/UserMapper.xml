@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plant.thesis.User.Mapper.UserMapper">
+	<select id="UserLoginCheck" resultType="java.lang.Integer" >
+		select count(1) from
+		book_ranker.thesis_user where thesis_UserId = #{thesis_UserId} and
+		thesis_UserPw = #{thesis_UserPw}
+	</select>
+
+	<select id="UserSignIdcheck" resultType="java.lang.Integer">
+		select count(1) from book_ranker.thesis_user where thesis_UserId = #{thesis_UserId}
+	</select>
+	
+	<insert id="UserSignUpInsert">
+		insert into book_ranker.thesis_user values(#{thesis_UserId},#{thesis_UserPw},#{thesis_UserName},#{thesis_UserPhone});
+	</insert>
+</mapper>
